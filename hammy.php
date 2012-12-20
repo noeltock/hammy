@@ -22,10 +22,9 @@ if (get_option('hammy_options')== '') {
 }
 
 function hammy_defaults() {
-    $arr = array('hammy_breakpoints' => '320,480,768', 'hammy_ignores' => 'nextgen, thumbnail');
+    $arr = array('hammy_breakpoints' => '320,480,768', 'hammy_ignores' => 'nextgen, thumbnail', 'hammy_parent' => '.entry-content');
     update_option('hammy_options', $arr);
 }
-
 
 /**
  * Check for WPThumb, include.
@@ -52,7 +51,7 @@ function load_hammy_js() {
 	
 	wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array('jquery') );
 	wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array('jquery') );
-	wp_localize_script( 'hammy', 'imageParent', $options['hammy_parent'] );
+    wp_localize_script( 'hammy', 'imageParent', $options['hammy_parent'] );
 		
 }
 
