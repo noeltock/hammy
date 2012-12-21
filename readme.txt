@@ -4,7 +4,7 @@ Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.4
 Tested up to: 3.4
-Stable tag: 0.3.1
+Stable tag: 0.4
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
