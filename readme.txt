@@ -2,9 +2,9 @@
 Contributors: Noel_Tock
 Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
-Requires at least: 3.4
-Tested up to: 3.4
-Stable tag: 0.4
+Requires at least: 3.5
+Tested up to: 3.5
+Stable tag: 1.0
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -12,7 +12,7 @@ Hammy speeds up your website by generating and serving resized images for your c
 
 = Introduction =
 
-Hammy takes your regular content images (within posts and pages) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most approriate image (or the smallest one possible). This makes for a better experience, especially on mobile.
+Hammy takes your regular content images (within posts and pages) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most approriate image (or the smallest one possible). This makes for a better experience, especially on mobile. This uses the new WP 3.5 image code.
 
 = Will it work on my Theme? =
 
@@ -27,6 +27,7 @@ It also takes on any classes or alternate titles that were previously on the ima
 = What else do I need to know? =
 
 * Supports Retina
+* Uses WordPress 3.5 Image Code (no external dependency)
 * You need to be willing to **spend a few minutes configuring and playing with the breakpoints and choosing the correct parent container** to get it right.
 * Hammy filters the output every single time, so while it's not the end of the world, caching is never a bad idea.
 
@@ -59,10 +60,6 @@ At the end, your breakpoints may look like `300,460,600`
 
 I'll add the ability to add classes/ID's to ignore, but please let me know of any edge-cases on the [Hammy forums](http://wordpress.org/support/plugin/hammy)
 
-== Screenshots ==
-
-1. Options Screen
-
 = How is Hammy constructed? =
 
 Hammy is possible through two awesome open source projects:
@@ -76,7 +73,16 @@ They're both worth checking out and getting a better understanding of (or using 
 
 Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be sure to check out the movie for full appreciation.
 
+== Screenshots ==
+
+1. Options Screen
+
 == Changelog ==
+
+= 1.0 =
+
+* Uses WordPress 3.5 core for powering resizes.
+* Fixes
 
 = 0.3.1 =
 * Slight logic change for the better
