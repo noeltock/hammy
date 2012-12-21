@@ -28,6 +28,7 @@ function hammy_defaults() {
 
 /**
  * Check for WPThumb, include.
+ * 
  */
 if ( !function_exists('wpthumb') ) {
 	include_once('WPThumb/wpthumb.php');
