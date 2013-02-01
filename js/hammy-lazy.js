@@ -3,6 +3,7 @@
  * - Remove hard-coded caption sizes
  * - Fire off Responsive Images
  * - Move figcaption below img
+ * - Cast Lazy Loader magic
 */
 
  jQuery(document).ready(function($){
@@ -17,4 +18,5 @@
 		$(this).append(caption);
   	});
 	
+	$("img.lazy").lazyload({effect: "fadeIn"});
 });
