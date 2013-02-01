@@ -10,6 +10,7 @@ function hammy_options_init() {
         add_settings_field( 'hammy_parent', '', 'hammy_field_parent', 'hammy_section', 'hammy_section_main' );
         add_settings_field( 'hammy_breakpoints', '', 'hammy_field_breakpoints', 'hammy_section', 'hammy_section_main' );
         add_settings_field( 'hammy_ignores', '', 'hammy_field_ignores', 'hammy_section', 'hammy_section_main' );
+        add_settings_field( 'hammy_lazy', '', 'hammy_field_lazy', 'hammy_section', 'hammy_section_main' );
 
 }
 
@@ -75,6 +76,30 @@ function hammy_field_ignores() {
 
 }
 
+function hammy_field_lazy() {
+
+    $options = get_option( 'hammy_options' );
+    $value = $options['hammy_lazy'];
+
+    ?>
+
+    <h3>3) Check if you want to use Lazy Loader</h3>
+    <p>Lazy Load delays loading of images in long web pages. Images outside of viewport wont be loaded before user scrolls to them. This is opposite of image preloading.<p>
+	<p>Using Lazy Load on long web pages containing many large images makes the page load faster. Browser will be in ready state after loading visible images. In some cases it can also help to reduce server load.</p>
+    <p>Lazy Load Plugin for jQuery has been developed by <em>Mika Tuupola</em> (<a href="https://twitter.com/tuupola" target="_blank">@tuupola</a>).  <a href="https://github.com/tuupola/jquery_lazyload" title="Github : Lazy Load" target="_blank">Read more</a> about Lazy Load.</p>
+    <div class="hammy-lazy-wrap onoffswitch" data-type="lazy">
+    	<input name="hammy_options[hammy_lazy]" type="checkbox" class="onoffswitch-checkbox" id="lazy-check-input" value="1" <?php checked( '1', $value);?>/>
+		    <label class="onoffswitch-label" id="lazy-check" for="myonoffswitch">
+		        <div class="onoffswitch-inner"></div>
+		        <div class="onoffswitch-switch"></div>
+		    </label>
+		</div>
+    </div>
+
+    <?php
+
+}
+
 /**
  * Register Page
  */
@@ -102,7 +127,6 @@ function hammy_options_page() {
 			<br />
 			<input name="Submit" type="submit" style="margin-top:20px" value="<?php esc_attr_e('Save changes'); ?>" />
 		</form>
-
 	</div>
 
     <script>
@@ -229,6 +253,11 @@ function hammy_options_page() {
                 $(this).parent().fadeOut().remove();
                 remove_value(field, value);
                 update_view(type);
+            });
+            
+            $('#lazy-check').click(function() {
+            	var $checkbox = $('#lazy-check-input');
+            	$checkbox.attr('checked', !$checkbox.attr('checked'));
             });
 
         });
