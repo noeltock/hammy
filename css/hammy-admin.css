@@ -7,12 +7,20 @@
 }
 
 .hammy-page input[type=submit] {
-    padding:12px 20px;
+    padding:8px 16px;
     font-size:16px;
+    cursor: pointer;
+    cursor: hand;
 }
 
 .hammy-page td {
     padding-left:0;
+}
+
+.hammy-page select {
+    display:block!important;
+    height:auto!important;
+    padding:6px 8px;
 }
 
 input[type=text].hammy-content,

@@ -49,7 +49,7 @@ function load_hammy_js() {
 
 	$options = get_option( 'hammy_options' );	
 	
-	if ( $options['hammy_lazy'] ) {
+	if ( $options['hammy_lazy'] == 'true' ) {
 		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array( 'jquery' ), null, true  );
@@ -168,83 +168,5 @@ function hammy_replace_images( $content ) {
 }
 
 add_filter( 'the_content', 'hammy_replace_images', 999 );
-
-
-/**
- * Hammy time for post data outside of the_content(), good for custom post type templates, etc.
- *
- * @params
- *	- $id (int) - ID of the image
- *	- $class (string) - Class(es) of the image
- *	- $size (string) - The thumbnail size to use
- *	- $caption (boolean) - Display the caption of the image, or not
- *
- * @return DOM element with fallback (<picture> -> <img>)
- */
-function hammy_image( $id, $class, $size = "large", $caption = false ) {
-
-	//  TODO: Check if $caption is necessary
-
-	$options = get_option('hammy_options');
-	// Get Sizes
-	$sizes = explode(",", $options['hammy_breakpoints']);
-	// Render Sizes
-	$i = 0;
-	$breakpoint = null;
-	
-	// Get the image and its metadata
-	$original = wp_get_attachment_image_src( $id, $size ); 
-	$metadata = wp_get_attachment_metadata($id);
-	$data = get_post($id);
-	// Get the caption and the alt text
-	$caption = $data->post_excerpt;
-	$alt = get_post_meta($id, '_wp_attachment_image_alt', true);
-	
-	list($width, $height, $type, $attr)= getimagesize($original[0]);
-
-	$newimage = '<picture class="hammy-responsive ' . $class . '" alt="' . $alt . '">';
-
-		foreach ($sizes as $size) {
-
-			if ( $i == 0 ) {
-
-				$media = null;
-
-			} else {
-
-				$media = ' media="(min-width:' . $breakpoint . 'px)"';
-
-			}
-
-			if ( $size <= $width ) {
-
-				$resized_image = wpthumb( $original[0], 'width=' . $size . '&crop=0' );
-
-				$newimage .= '<source src="' . $resized_image . '"' . $media . '>';
-
-			}
-
-			$i++;
-			
-			$breakpoint = $size;
-			
-			}
-
-		$newimage .= '<noscript><img src="' . $original[0]. '" alt="' . $alt . '"></noscript>';
-		
-			// If has a caption display it inside a figcaption
-			if ($caption) {
-			
-				$newimage .= '<figcaption>' . $caption . '</figcaption></picture>';
-			
-			} else {
-			
-				$newimage .= '</picture>';
-			
-			}
-		
-		echo $newimage;
-
-}
 
 ?>

@@ -86,15 +86,10 @@ function hammy_field_lazy() {
     <h3>3) Check if you want to use Lazy Loader</h3>
     <p>Lazy Load delays loading of images in long web pages. Images outside of viewport wont be loaded before user scrolls to them. This is opposite of image preloading.<p>
 	<p>Using Lazy Load on long web pages containing many large images makes the page load faster. Browser will be in ready state after loading visible images. In some cases it can also help to reduce server load.</p>
-    <p>Lazy Load Plugin for jQuery has been developed by <em>Mika Tuupola</em> (<a href="https://twitter.com/tuupola" target="_blank">@tuupola</a>).  <a href="https://github.com/tuupola/jquery_lazyload" title="Github : Lazy Load" target="_blank">Read more</a> about Lazy Load.</p>
-    <div class="hammy-lazy-wrap onoffswitch" data-type="lazy">
-    	<input name="hammy_options[hammy_lazy]" type="checkbox" class="onoffswitch-checkbox" id="lazy-check-input" value="1" <?php checked( '1', $value);?>/>
-		    <label class="onoffswitch-label" id="lazy-check" for="myonoffswitch">
-		        <div class="onoffswitch-inner"></div>
-		        <div class="onoffswitch-switch"></div>
-		    </label>
-		</div>
-    </div>
+    <select id="hammy-lazy" name="hammy_options[hammy_lazy]">
+      <option value="true" <?php if ( $value == 'true' ) echo 'selected'; ?>>On</option>
+      <option value="false" <?php if ( $value == 'false') echo 'selected'; ?>>Off</option>
+    </select>
 
     <?php
 
@@ -127,6 +122,9 @@ function hammy_options_page() {
 			<br />
 			<input name="Submit" type="submit" style="margin-top:20px" value="<?php esc_attr_e('Save changes'); ?>" />
 		</form>
+
+        <p style="color:#777;font-size:11px;margin-top:20px">Hammy is possible through these awesome projects: <a href="http://jquerypicture.com/" title="jQuery Picture" target="_blank">jQuery Picture</a>, <a href="https://github.com/humanmade/WPThumb" title="Github : WPThumb" target="_blank">WPThumb</a> & <a href="https://github.com/tuupola/jquery_lazyload" title="Github : Lazy Load" target="_blank">Lazy Load</a></p>
+   
 	</div>
 
     <script>
