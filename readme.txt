@@ -3,8 +3,8 @@ Contributors: Noel_Tock
 Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
-Tested up to: 3.5
-Stable tag: 1.0
+Tested up to: 3.5.1
+Stable tag: 1.1
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -22,14 +22,14 @@ Hammy takes your regular content images (within posts and pages) and regenerates
 
 When activated, the `<img>` tag is replaced by the `<picture>` tag, and the alternate image sizes are provided in a way that only jQuery can access/load. If jQuery isn't available, it falls back to the regular image you had there in the first place.
 
-It also takes on any classes or alternate titles that were previously on the image tag. It does not make any changes to your database (i.e. content or images that you already have remain untouched).
+It also takes on any classes or alternate titles from the original image. It does not make any changes to your database (i.e. content or images that you already have remain untouched).
 
 = What else do I need to know? =
 
 * Supports Retina
 * Uses WordPress 3.5 Image Code (no external dependency)
 * You need to be willing to **spend a few minutes configuring and playing with the breakpoints and choosing the correct parent container** to get it right.
-* Hammy filters the output every single time, so while it's not the end of the world, caching is never a bad idea.
+* Hammy filters the output every single time, but only needs to generate a resized image once.
 
 = Updates =
 
@@ -52,13 +52,13 @@ The width of your browser is quite different than that of the post/page containe
 
 = Breakpoints example? =
 
-If your website is 960px wide, but the content (#content) is only 600px, then `600` is your last breakpoint. If the next smaller size is iPhone landscape (where the sidebar gets pushed under) and you have a 10px margin on either side, that breakpoint is `460` (480 minus 20), and so forth.
+If your website is 960px wide, but the content (#content) is only 600px, then `600` is your largest breakpoint. If the next smaller size is iPhone landscape (where the sidebar is also positioned underneath the content) and you have a 10px margin on either side, that breakpoint is `460` (480 minus 20), and so forth.
 
 At the end, your breakpoints may look like `300,460,600`
 
 = It doesn't work with this gallery plugin or something else, what to do? =
 
-I'll add the ability to add classes/ID's to ignore, but please let me know of any edge-cases on the [Hammy forums](http://wordpress.org/support/plugin/hammy)
+You have the ability to ignore certain classes (i.e. ".gallery-thumb"), but please let me know of any edge-cases on the [Hammy forums](http://wordpress.org/support/plugin/hammy)
 
 = How is Hammy constructed? =
 
@@ -78,6 +78,11 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 1. Options Screen
 
 == Changelog ==
+
+= 1.1 =
+
+* Add Lazy Loading
+* Clean up code a bit
 
 = 1.0 =
 

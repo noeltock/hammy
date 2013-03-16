@@ -4,76 +4,75 @@ Plugin Name: Hammy
 Plugin URI: http://wordpress.org/extend/plugins/hammy/
 Description: Creates responsive images for your content area with breakpoints that you set.
 Author: Noel Tock
-Version: 1.0.1
+Version: 1.1.0
 Author URI: http://www.noeltock.com
 */
 
 /**
  * Defines
  */
-define ( 'HAMMY_VERSION', '1.0' );
+define ( 'HAMMY_VERSION', '1.1' );
 define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 
 /**
  * Register Default Settings
  */
-if (get_option('hammy_options')== '') {
-    register_activation_hook(__FILE__, 'hammy_defaults');
+if ( ! get_option('hammy_options') ) {
+    register_activation_hook( __FILE__, 'hammy_defaults' );
 }
 
 function hammy_defaults() {
-    $arr = array('hammy_breakpoints' => '320,480,768', 'hammy_ignores' => 'nextgen, thumbnail', 'hammy_parent' => '.entry-content', 'hammy_lazy' => '');
-    update_option('hammy_options', $arr);
+    $arr = array( 'hammy_breakpoints' => '320,480,768', 'hammy_ignores' => 'nextgen, thumbnail', 'hammy_parent' => '.entry-content', 'hammy_lazy' => 'false');
+    update_option( 'hammy_options', $arr );
 }
 
 /**
  * Check for WPThumb, include.
  * 
  */
-if ( !function_exists('wpthumb') ) {
-	include_once('WPThumb/wpthumb.php');
+if ( !function_exists( 'wpthumb' ) ) {
+	include_once( 'WPThumb/wpthumb.php' );
 }
 
 /**
  * Plugin Options
  */
-include_once('includes/options.php');
+include_once( 'includes/options.php' );
 
-add_action('admin_init', 'hammy_options_init' );
-add_action('admin_menu', 'hammy_add_page');
-
+add_action( 'admin_init', 'hammy_options_init' );
+add_action( 'admin_menu', 'hammy_add_page' );
 
 /**
- * Enqueue & Localize JavaScript & CSS
+ * Enqueue & Localize JavaScript & CSS ( TODO: find opportunity for minqueue)
  */
 function load_hammy_js() {
 
-	$options = get_option('hammy_options');
+	$options = get_option( 'hammy_options' );	
 	
-	
-	
-	if ($options['hammy_lazy']) {
-		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array('jquery'),null,true );
-		wp_enqueue_script('lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array('jquery'),null, true );
-		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array('jquery'),null,true  );
+	if ( $options['hammy_lazy'] ) {
+		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array( 'jquery' ), null, true  );
 	} else {
-		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array('jquery'),null,true );
-		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array('jquery'),null,true  );
+		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array( 'jquery' ), null, true  );
 	}
-	
+
     wp_localize_script( 'hammy', 'imageParent', $options['hammy_parent'] );
 		
 }
 
-add_action('wp_print_scripts', 'load_hammy_js');
+// TODO enqueue scripts
+
+add_action( 'wp_print_scripts', 'load_hammy_js' );
 
 function load_hammy_css() {
 
-    wp_enqueue_style('hammy-css', HAMMY_PATH . '/css/hammy-admin.css');
+    wp_enqueue_style( 'hammy-css', HAMMY_PATH . '/css/hammy-admin.css' );
 
 }
 
-add_action('admin_print_styles', 'load_hammy_css');
+add_action( 'admin_print_styles', 'load_hammy_css' );
 
 /**
  * Hammy Time
@@ -85,38 +84,38 @@ function hammy_replace_images( $content ) {
 
 	global $post;
 
-    $options = get_option('hammy_options');
+    $options = get_option( 'hammy_options' );
 	
-	preg_match_all('/<img (.*?)\/>/', $content, $images);
+	preg_match_all( '/<img (.*?)\/>/', $content, $images );
 	
 	if( !is_null( $images ) ) {
 	
 		foreach( $images[0] as $index => $value) {
 		
 			$doc = new DOMDocument();
-			$doc->loadHTML($value);
-			$items = $doc->getElementsByTagName('img');
+			$doc->loadHTML( $value );
+			$items = $doc->getElementsByTagName( 'img' );
 				
-			foreach($items as $item) {
+			foreach( $items as $item ) {
 
 				// Get Attributes
 			
-				$original = $item->getAttribute('src');
-				$width = $item->getAttribute('width');
-				$class = $item->getAttribute('class');
-				$alt = $item->getAttribute('alt');
+				$original = $item->getAttribute( 'src' );
+				$width = $item->getAttribute( 'width' );
+				$class = $item->getAttribute( 'class' );
+				$alt = $item->getAttribute( 'alt' );
 
                 // Check if it's part of an ignored class
 
-                $ignoreClasses = explode(",", $options['hammy_ignores']);
+                $ignoreClasses = explode( ",", $options['hammy_ignores'] );
 
-                $ignorelist = '/' . implode("|", $ignoreClasses) . '/';
+                $ignorelist = '/' . implode( "|", $ignoreClasses ) . '/';
 
-                if ( !preg_match( $ignorelist, $class) ) {
+                if ( ! preg_match( $ignorelist, $class ) ) {
 				
                     // Get Sizes
 
-                    $sizes = explode(",", $options['hammy_breakpoints']);
+                    $sizes = explode( ",", $options['hammy_breakpoints'] );
 
                     // Render Sizes
 
@@ -127,7 +126,7 @@ function hammy_replace_images( $content ) {
 
                     $newimage = '<picture class="hammy-responsive ' . $class . '" alt="' . $alt . '">';
 
-                    foreach ($sizes as $size) {
+                    foreach ( $sizes as $size ) {
 
                         if ( $i == 0 ) {
 
@@ -140,7 +139,6 @@ function hammy_replace_images( $content ) {
                         }
 
                         if ( $size <= $width ) {
-
 
                             $resized_image = wpthumb( $original, 'width=' . $size . '&crop=0' );
 
@@ -155,7 +153,7 @@ function hammy_replace_images( $content ) {
 
                     $newimage .= '<noscript><img src="' . $original . '" alt="' . $alt . '"></noscript></picture>';
 
-                    $content = str_replace($images[0][$index], $newimage, $content);
+                    $content = str_replace( $images[0][$index], $newimage, $content );
 
                 }
 				
@@ -169,12 +167,11 @@ function hammy_replace_images( $content ) {
 	
 }
 
-add_filter('the_content', 'hammy_replace_images', 999);
+add_filter( 'the_content', 'hammy_replace_images', 999 );
 
 
 /**
- * Hammy, please give me some adaptive images even if I'm not using the_content();
- * Modified by Jacques Letesson (@jacquesletesson)
+ * Hammy time for post data outside of the_content(), good for custom post type templates, etc.
  *
  * @params
  *	- $id (int) - ID of the image
@@ -184,7 +181,9 @@ add_filter('the_content', 'hammy_replace_images', 999);
  *
  * @return DOM element with fallback (<picture> -> <img>)
  */
-function hammy_please_replace_images( $id, $class = "", $size = "large", $caption = false ) {
+function hammy_image( $id, $class, $size = "large", $caption = false ) {
+
+	//  TODO: Check if $caption is necessary
 
 	$options = get_option('hammy_options');
 	// Get Sizes
@@ -249,4 +248,3 @@ function hammy_please_replace_images( $id, $class = "", $size = "large", $captio
 }
 
 ?>
-
