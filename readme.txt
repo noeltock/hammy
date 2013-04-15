@@ -4,7 +4,7 @@ Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -12,7 +12,7 @@ Hammy speeds up your website by generating and serving resized images for your c
 
 = Introduction =
 
-Hammy takes your regular content images (within posts and pages) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most approriate image (or the smallest one possible). This makes for a better experience, especially on mobile. This uses the new WP 3.5 image code.
+Hammy takes your regular content images (within posts and pages) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most appropriate image (or the smallest one possible). This makes for a better experience, especially on mobile. This uses the new WP 3.5 image code.
 
 = Will it work on my Theme? =
 
@@ -79,10 +79,17 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 == Changelog ==
 
+= 1.2 =
+
+* Fixed readme.txt typo's
+* Added title attribute to images
+* Updated WPThumb to latest
+
 = 1.1 =
 
-* Add Lazy Loading
-* Clean up code a bit
+* Add Lazy Loading with the help of @jacquesletesson
+* Clean up code to conform to WP standards more
+* Latest version of WPThumb
 
 = 1.0 =
 
@@ -116,4 +123,4 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 == Feedback & Bugs ==
 
-As this is a new plugin, there are likely to be a few issues. Kindly post any issues, questions or suggestions on the [Hammy forums](http://wordpress.org/support/plugin/hammy) .
+Kindly post any issues, questions or suggestions on the [Hammy forums](http://wordpress.org/support/plugin/hammy) .

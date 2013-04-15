@@ -2,16 +2,16 @@
 /*
 Plugin Name: Hammy
 Plugin URI: http://wordpress.org/extend/plugins/hammy/
-Description: Creates responsive images for your content area with breakpoints that you set.
+Description: Creates adaptive images for your content area with breakpoints that you set.
 Author: Noel Tock
-Version: 1.1.0
+Version: 1.2.0
 Author URI: http://www.noeltock.com
 */
 
 /**
  * Defines
  */
-define ( 'HAMMY_VERSION', '1.1' );
+define ( 'HAMMY_VERSION', '1.2' );
 define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 
 /**
@@ -104,6 +104,7 @@ function hammy_replace_images( $content ) {
 				$width = $item->getAttribute( 'width' );
 				$class = $item->getAttribute( 'class' );
 				$alt = $item->getAttribute( 'alt' );
+				$title = $item->getAttribute( 'title' );
 
                 // Check if it's part of an ignored class
 
@@ -124,7 +125,7 @@ function hammy_replace_images( $content ) {
 
                     // Output & Replace Strings
 
-                    $newimage = '<picture class="hammy-responsive ' . $class . '" alt="' . $alt . '">';
+                    $newimage = '<picture class="hammy-responsive ' . $class . '" alt="' . $alt . '" title="' . $title . '">';
 
                     foreach ( $sizes as $size ) {
 
@@ -151,7 +152,7 @@ function hammy_replace_images( $content ) {
 
                     }
 
-                    $newimage .= '<noscript><img src="' . $original . '" alt="' . $alt . '"></noscript></picture>';
+                    $newimage .= '<noscript><img src="' . $original . '" alt="' . $alt . '" title="' . $title . '"></noscript></picture>';
 
                     $content = str_replace( $images[0][$index], $newimage, $content );
 

@@ -5,12 +5,12 @@
  */
 function hammy_options_init() {
 
-        register_setting( 'hammy_options', 'hammy_options' );
-        add_settings_section( 'hammy_section_main', '', 'hammy_options_header', 'hammy_section' );
-        add_settings_field( 'hammy_parent', '', 'hammy_field_parent', 'hammy_section', 'hammy_section_main' );
-        add_settings_field( 'hammy_breakpoints', '', 'hammy_field_breakpoints', 'hammy_section', 'hammy_section_main' );
-        add_settings_field( 'hammy_ignores', '', 'hammy_field_ignores', 'hammy_section', 'hammy_section_main' );
-        add_settings_field( 'hammy_lazy', '', 'hammy_field_lazy', 'hammy_section', 'hammy_section_main' );
+    register_setting( 'hammy_options', 'hammy_options' );
+    add_settings_section( 'hammy_section_main', '', 'hammy_options_header', 'hammy_section' );
+    add_settings_field( 'hammy_parent', '', 'hammy_field_parent', 'hammy_section', 'hammy_section_main' );
+    add_settings_field( 'hammy_breakpoints', '', 'hammy_field_breakpoints', 'hammy_section', 'hammy_section_main' );
+    add_settings_field( 'hammy_ignores', '', 'hammy_field_ignores', 'hammy_section', 'hammy_section_main' );
+    add_settings_field( 'hammy_lazy', '', 'hammy_field_lazy', 'hammy_section', 'hammy_section_main' );
 
 }
 
@@ -22,38 +22,38 @@ function hammy_options_header () {}
 
 function hammy_field_parent() {
 
-        $options = get_option( 'hammy_options' );
-        $value = $options['hammy_parent'];
+    $options = get_option( 'hammy_options' );
+    $value = $options['hammy_parent'];
 
-        ?>
+    ?>
 
-        <h3>1) Enter your Content Container</h3>
-        <p>Add the content class or ID that is consistent across all templates (i.e. on every page and post), oftentimes named <em>#content</em> or <em>.entry-content</em>, etc. Make sure you use the approriate prefix.</p>
+    <h3>1) Enter your Content Container</h3>
+    <p>Add the content class or ID that is consistent across all templates (i.e. on every page and post), oftentimes named <em>#content</em> or <em>.entry-content</em>, etc. Make sure you use the approriate prefix.</p>
 
-        <input name="hammy_options[hammy_parent]" class="hammy-content" type="text" value="<?php echo $value; ?>" placeholder=".your_content_class" />
+    <input name="hammy_options[hammy_parent]" class="hammy-content" type="text" value="<?php echo $value; ?>" placeholder=".your_content_class" />
 
-        <?php
+    <?php
 
 }
 
 
 function hammy_field_breakpoints() {
 
-        $options = get_option( 'hammy_options' );
-        $value = $options['hammy_breakpoints'];
+    $options = get_option( 'hammy_options' );
+    $value = $options['hammy_breakpoints'];
 
-        ?>
+    ?>
 
-        <h3>2) Add your Breakpoints</h3>
-        <p>Your breakpoints should be relevant to the container above. See the example on the <a href="h" target="_blank">FAQ</a> to get a better understanding.</p>
+    <h3>2) Add your Breakpoints</h3>
+    <p>Your breakpoints should be relevant to the container above. See the example on the <a href="h" target="_blank">FAQ</a> to get a better understanding.</p>
 
-        <div class="hammy-bp-wrap" data-type="breakpoints">
-            <input id='hammy-breakpoints-val' name='hammy_options[hammy_breakpoints]' type='hidden' value='<?php echo $value; ?>' />
-        </div>
+    <div class="hammy-bp-wrap" data-type="breakpoints">
+        <input id='hammy-breakpoints-val' name='hammy_options[hammy_breakpoints]' type='hidden' value='<?php echo $value; ?>' />
+    </div>
 
-        <input id="hammy-add-breakpoint" class="hammy-input" type="text" placeholder="Add another Breakpoint" /> <input id="hammy-add-breakpoint-button" type="button" value="Add Breakpoint" />
+    <input id="hammy-add-breakpoint" class="hammy-input" type="text" placeholder="Add another Breakpoint" /> <input id="hammy-add-breakpoint-button" type="button" value="Add Breakpoint" />
 
-        <?php
+    <?php
 
 }
 
@@ -100,9 +100,9 @@ function hammy_field_lazy() {
  */
 function hammy_add_page() {
 
-        add_options_page( 'Hammy', 'Hammy', 'manage_options', 'hammy', 'hammy_options_page' );
+    add_options_page( 'Hammy', 'Hammy', 'manage_options', 'hammy', 'hammy_options_page' );
 
-    }
+}
 
 /**
  * Display Page
