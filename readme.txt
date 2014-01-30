@@ -83,6 +83,12 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 == Changelog ==
 
+= 1.4 =
+
+* Allow images smaller then the smallest breakpoint to function
+* WPThumb Update
+* 3.8.1 Compatibility Testing
+
 = 1.3.2 =
 
 * WPThumb Update
@@ -136,6 +142,9 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 * Initial Release (Hammy Time)
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Bug fix, 3.8.1 check and WPThumb update
 
 = 1.3.1 =
 * Updated various aspects of all the plugin.
