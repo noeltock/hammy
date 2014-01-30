@@ -4,17 +4,15 @@ Plugin Name: Hammy
 Plugin URI: http://wordpress.org/extend/plugins/hammy/
 Description: Creates adaptive images for your content area with breakpoints that you set.
 Author: Noel Tock
-Version: 1.2.0
+Version: 1.4
 Author URI: http://www.noeltock.com
 */
 
 /**
  * Defines
  */
-
 define ( 'HAMMY_VERSION', '1.3.2' );
-$exp = explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) );
-define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( $exp ) );
+define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 
 /**
  * Register Default Settings
@@ -24,8 +22,25 @@ if ( ! get_option('hammy_options') ) {
 }
 
 function hammy_defaults() {
-    $arr = array( 'hammy_breakpoints' => '320,480,768', 'hammy_ignores' => 'nextgen, thumbnail', 'hammy_parent' => '.entry-content', 'hammy_lazy' => 'false');
+
+	global $content_width;
+
+	if ( $content_width ) {
+
+		$breakpoints = '';
+		if ( $content_width >= 400 ) $breakpoints .= '320,';
+		if ( $content_width >= 600 ) $breakpoints .= '480,';
+		$breakpoints .= $content_width;
+
+	} else {
+
+		$breakpoints = '320,480,624';
+
+	}
+
+    $arr = array( 'hammy_breakpoints' => $breakpoints, 'hammy_ignores' => 'nextgen, thumbnail', 'hammy_parent' => '.entry-content', 'hammy_lazy' => 'false');
     update_option( 'hammy_options', $arr );
+
 }
 
 /**

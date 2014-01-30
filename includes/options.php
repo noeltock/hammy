@@ -45,7 +45,7 @@ function hammy_field_breakpoints() {
     ?>
 
     <h3>2) Add your Breakpoints</h3>
-    <p>Your breakpoints should be relevant to the container above. See the example on the <a href="h" target="_blank">FAQ</a> to get a better understanding.</p>
+    <p>Your breakpoints should be relevant to the container above. See the example on the <a href="http://wordpress.org/extend/plugins/hammy/faq/" target="_blank">FAQ</a> to get a better understanding.</p>
 
     <div class="hammy-bp-wrap" data-type="breakpoints">
         <input id='hammy-breakpoints-val' name='hammy_options[hammy_breakpoints]' type='hidden' value='<?php echo $value; ?>' />
@@ -83,7 +83,7 @@ function hammy_field_lazy() {
 
     ?>
 
-    <h3>3) Check if you want to use Lazy Loader</h3>
+    <h3>4) Check if you want to use Lazy Loader</h3>
     <p>Lazy Load delays loading of images in long web pages. Images outside of viewport wont be loaded before user scrolls to them. This is opposite of image preloading.<p>
 	<p>Using Lazy Load on long web pages containing many large images makes the page load faster. Browser will be in ready state after loading visible images. In some cases it can also help to reduce server load.</p>
     <select id="hammy-lazy" name="hammy_options[hammy_lazy]">

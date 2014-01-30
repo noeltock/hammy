@@ -3,8 +3,8 @@ Contributors: Noel_Tock
 Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
-Tested up to: 3.5.1
-Stable tag: 1.2
+Tested up to: 3.8.1
+Stable tag: 1.4
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -36,6 +36,10 @@ It also takes on any classes or alternate titles from the original image. It doe
 Follow me for updates at [@noeltock](http://www.twitter.com/noeltock)
 
 == Installation ==
+
+Video Walkthrough
+
+http://www.youtube.com/watch?v=GpmAaGAW9-c
 
 Hammy already starts working upon activation, so any configuration is optional:
 
@@ -79,6 +83,28 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 == Changelog ==
 
+= 1.3.2 =
+
+* WPThumb Update
+
+= 1.3.1 =
+
+* Readme & Banner changes
+
+= 1.3.0 =
+
+* Updated WPThumb
+* Added defaults that take into consideration `$content_width` if available.
+
+= 1.2.3 =
+
+* Add Walkthrough Video (under Installation)
+
+= 1.2.1 =
+
+* Fixed typo
+* Added walkthrough
+
 = 1.2 =
 
 * Fixed readme.txt typo's
@@ -110,6 +136,9 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 * Initial Release (Hammy Time)
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+* Updated various aspects of all the plugin.
 
 = 0.3.1 =
 * Slight logic change for the better
