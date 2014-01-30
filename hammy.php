@@ -11,8 +11,10 @@ Author URI: http://www.noeltock.com
 /**
  * Defines
  */
-define ( 'HAMMY_VERSION', '1.2' );
-define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
+
+define ( 'HAMMY_VERSION', '1.3.2' );
+$exp = explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) );
+define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( $exp ) );
 
 /**
  * Register Default Settings
