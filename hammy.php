@@ -154,6 +154,14 @@ function hammy_replace_images( $content ) {
 
                     }
 
+                    // Fallback incase original image is smaller then smallest breakpoint
+
+                    if ( $width < $sizes[0] ) {
+
+                    	$newimage .= '<source src="' . $original. '" media="(min-width:' . $width . 'px)">';
+
+                    }
+
                     $newimage .= '<noscript><img src="' . $original . '" alt="' . $alt . '" title="' . $title . '"></noscript></picture>';
 
                     $content = str_replace( $images[0][$index], $newimage, $content );
