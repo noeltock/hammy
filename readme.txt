@@ -4,7 +4,7 @@ Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 1.4
+Stable tag: 1.4.1
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -12,11 +12,11 @@ Hammy speeds up your website by generating and serving resized images for your c
 
 = Introduction =
 
-Hammy takes your regular content images (within posts and pages) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most appropriate image (or the smallest one possible). This makes for a better experience, especially on mobile. This uses the new WP 3.5 image code.
+Hammy takes your regular content images (only within posts and pages, not custom post types) and regenerates a number of smaller sized images. When a person visits your website, it then automatically provides them with the most appropriate image (or the smallest one possible). This makes for a better experience, especially on mobile. This uses the new WP 3.5 image code.
 
 = Will it work on my Theme? =
 
-**Yes!**
+**Yes!** (the only exception being themes with no standard posts or pages)
 
 = How does it work? =
 
@@ -34,6 +34,12 @@ It also takes on any classes or alternate titles from the original image. It doe
 = Updates =
 
 Follow me for updates at [@noeltock](http://www.twitter.com/noeltock)
+
+= GitHub =
+
+If you have technical issues or other enhancements that you'd like to contribute, please do so in the form of a pull request or issue here:
+
+[http://wordpress.org/plugins/hammy/](http://wordpress.org/plugins/hammy/)
 
 == Installation ==
 
@@ -82,6 +88,11 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 1. Options Screen
 
 == Changelog ==
+
+= 1.4.1 =
+
+* Typo
+* Tested PNG
 
 = 1.4 =
 

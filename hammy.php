@@ -4,14 +4,14 @@ Plugin Name: Hammy
 Plugin URI: http://wordpress.org/extend/plugins/hammy/
 Description: Creates adaptive images for your content area with breakpoints that you set.
 Author: Noel Tock
-Version: 1.4
+Version: 1.4.1
 Author URI: http://www.noeltock.com
 */
 
 /**
  * Defines
  */
-define ( 'HAMMY_VERSION', '1.3.2' );
+define ( 'HAMMY_VERSION', '1.4.1' );
 define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) ) ) );
 
 /**
