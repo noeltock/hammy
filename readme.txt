@@ -91,6 +91,7 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 = 1.4.1 =
 
+* Fixed Warnings
 * Typo
 * Tested PNG
 
@@ -153,6 +154,9 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 * Initial Release (Hammy Time)
 
 == Upgrade Notice ==
+
+= 1.4.1 =
+* Important fix
 
 = 1.4 =
 * Bug fix, 3.8.1 check and WPThumb update
