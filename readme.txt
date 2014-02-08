@@ -1,7 +1,7 @@
 === Hammy ===
 Contributors: Noel_Tock
 Donate link: http://www.noeltock.com
-Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
+Tags: responsive, adaptive, image, images, figure, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
 Tested up to: 3.8.1
 Stable tag: 1.4.2
@@ -20,7 +20,7 @@ Hammy takes your regular content images (only within posts and pages, not custom
 
 = How does it work? =
 
-When activated, the `<img>` tag is replaced by the `<picture>` tag, and the alternate image sizes are provided in a way that only jQuery can access/load. If jQuery isn't available, it falls back to the regular image you had there in the first place.
+When activated, the `<img>` tag is replaced by the `<figure>` tag, and the alternate image sizes are provided in a way that only jQuery can access/load. If jQuery isn't available, it falls back to the regular image you had there in the first place.
 
 It also takes on any classes or alternate titles from the original image. It does not make any changes to your database (i.e. content or images that you already have remain untouched).
 
@@ -52,7 +52,7 @@ Hammy already starts working upon activation, so any configuration is optional:
 1. Upload the folder `hammy` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. (Optional) Go to Settings -> Hammy and review the options. Add the id/class of the container that holds your posts (i.e. #content). Then add breakpoints that are relevant to that container ( **see the FAQ for an example** ).
-1. (Optional) Edit your theme's CSS to add `picture.hammy-responsive`, in a way that it is identical to any `img` styling used for your content area.
+1. (Optional) Edit your theme's CSS to add `figure.hammy-responsive`, in a way that it is identical to any `img` styling used for your content area.
 
 == Frequently Asked Questions ==
 
@@ -91,7 +91,7 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 = 1.5.0 =
 
-* Moved back to using `figure` as opposed to `picture`for larger compatibility (especially IE)
+* Moved back to using `figure` as opposed to `picture`for larger compatibility (especially IE). **Check your CSS to make sure figure** acts like an image.
 * Updated Lazy Load to 1.9.3
 * Gave Lazy Load placeholders dimensions so that the browser doesn't reflow for each load
 
