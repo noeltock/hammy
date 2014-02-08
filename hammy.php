@@ -68,13 +68,13 @@ function load_hammy_js() {
 	$options = get_option( 'hammy_options' );	
 	
 	if ( $options['hammy_lazy'] == 'true' ) {
-		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array( 'jquery' ), null, true  );
+		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array( 'jquery' ), '1.5.1' , true );
+		wp_enqueue_script( 'lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array( 'jquery' ), '1.5.1' , true );
+		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array( 'jquery' ), '1.5.1' , true  );
 		wp_enqueue_style( 'hammy-stylesheet', HAMMY_PATH . '/css/hammy.css' );
 	} else {
-		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array( 'jquery' ), null, true  );
+		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array( 'jquery' ), '1.5.1' , true );
+		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array( 'jquery' ), '1.5.1' , true  );
 		wp_enqueue_style( 'hammy-stylesheet', HAMMY_PATH . '/css/hammy.css' );
 	}
 
