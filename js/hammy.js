@@ -8,11 +8,11 @@
  jQuery(document).ready(function($){
  
 	$('.wp-caption').css('width','');
-    $('picture.hammy-responsive').picture({
+    $('figure.hammy-responsive').picture({
 		container: imageParent
 	});
 	
-	$('picture.hammy-responsive').each(function() {
+	$('figure.hammy-responsive').each(function() {
 		var caption = $(this).find('figcaption');
 		$(this).append(caption);
   	});

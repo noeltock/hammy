@@ -4,7 +4,7 @@ Donate link: http://www.noeltock.com
 Tags: responsive, adaptive, image, images, picture, pictures, smartphone, mobile, resize, resized, automatic, automated, speed, fast
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 
 Hammy speeds up your website by generating and serving resized images for your content area depending on content width.
 
@@ -89,6 +89,12 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 
 == Changelog ==
 
+= 1.5.0 =
+
+* Moved back to using `figure` as opposed to `picture`for larger compatibility (especially IE)
+* Updated Lazy Load to 1.9.3
+* Gave Lazy Load placeholders dimensions so that the browser doesn't reflow for each load
+
 = 1.4.1 =
 
 * Fixed Warnings
@@ -154,6 +160,9 @@ Hammy, from the movie "Over the Hedge", he's quite fast, like these images. Be s
 * Initial Release (Hammy Time)
 
 == Upgrade Notice ==
+
+= 1.5.0 =
+* Important enhancements
 
 = 1.4.1 =
 * Important fix

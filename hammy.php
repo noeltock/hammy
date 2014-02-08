@@ -4,7 +4,7 @@ Plugin Name: Hammy
 Plugin URI: http://wordpress.org/extend/plugins/hammy/
 Description: Creates adaptive images for your content area with breakpoints that you set.
 Author: Noel Tock
-Version: 1.4.1
+Version: 1.5.0
 Author URI: http://www.noeltock.com
 */
 
@@ -12,7 +12,7 @@ Author URI: http://www.noeltock.com
  * Defines
  */
 $path = explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) );
-define ( 'HAMMY_VERSION', '1.4.1' );
+define ( 'HAMMY_VERSION', '1.5.0' );
 define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( $path ) );
 
 /**
@@ -71,9 +71,11 @@ function load_hammy_js() {
 		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture-lazy.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'lazyload', HAMMY_PATH . '/js/jquery.lazyload.min.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy-lazy.js', array( 'jquery' ), null, true  );
+		wp_enqueue_style( 'hammy-stylesheet', HAMMY_PATH . '/css/hammy.css' );
 	} else {
 		wp_enqueue_script( 'jquery-picture', HAMMY_PATH . '/js/jquery-picture.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'hammy', HAMMY_PATH . '/js/hammy.js', array( 'jquery' ), null, true  );
+		wp_enqueue_style( 'hammy-stylesheet', HAMMY_PATH . '/css/hammy.css' );
 	}
 
     wp_localize_script( 'hammy', 'imageParent', $options['hammy_parent'] );
@@ -96,7 +98,7 @@ add_action( 'admin_print_styles', 'load_hammy_css' );
  * Hammy Time
  *
  * @param $content
- * @return DOM element with fallback (<picture> -> <img>)
+ * @return DOM element with fallback (<figure> -> <img>)
  */
 function hammy_replace_images( $content ) {
 
@@ -120,6 +122,7 @@ function hammy_replace_images( $content ) {
 			
 				$original = $item->getAttribute( 'src' );
 				$width = $item->getAttribute( 'width' );
+				$height = $item->getAttribute( 'height' );
 				$class = $item->getAttribute( 'class' );
 				$alt = $item->getAttribute( 'alt' );
 				$title = $item->getAttribute( 'title' );
@@ -143,25 +146,27 @@ function hammy_replace_images( $content ) {
 
                     // Output & Replace Strings
 
-                    $newimage = '<picture class="hammy-responsive ' . $class . '" alt="' . $alt . '" title="' . $title . '">';
+                    /*
+
+                    <figure class="responsive" data-media="assets/images/small.png" data-media440="assets/images/medium.png" data-media600="assets/images/large.png" title="A Half Brained Idea">
+					    <noscript>
+					        <img src="assets/images/large.png" alt="A Half Brained Idea">
+					    </noscript>
+					</figure>
+
+					*/	
+
+                    $newimage = '<figure class="hammy-responsive ' . $class . '" alt="' . $alt . '" title="' . $title . '" ';
 
                     foreach ( $sizes as $size ) {
 
-                        if ( $i == 0 ) {
-
-                            $media = null;
-
-                        } else {
-
-                            $media = ' media="(min-width:' . $breakpoint . 'px)"';
-
-                        }
+                    	var_dump($size);
 
                         if ( $size <= $width ) {
 
                             $resized_image = wpthumb( $original, 'width=' . $size . '&crop=0' );
 
-                            $newimage .= '<source src="' . $resized_image . '"' . $media . '>';
+                            $newimage .= ' data-media' . $breakpoint . '="' . $resized_image . '"';
 
                         }
 
@@ -172,13 +177,15 @@ function hammy_replace_images( $content ) {
 
                     // Fallback incase original image is smaller then smallest breakpoint
 
+                    
                     if ( $width < $sizes[0] ) {
 
-                    	$newimage .= '<source src="' . $original. '" media="(min-width:' . $width . 'px)">';
+                    	$newimage .= ' data-media="' . $original . '"';
 
                     }
+                    
 
-                    $newimage .= '<noscript><img src="' . $original . '" alt="' . $alt . '" title="' . $title . '"></noscript></picture>';
+                    $newimage .= '><noscript><img src="' . $original . '" alt="' . $alt . '" title="' . $title . '" width="' . $width . '" height="' . $height . '"></noscript></figure>';
 
                     $content = str_replace( $images[0][$index], $newimage, $content );
 
