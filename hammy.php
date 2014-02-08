@@ -146,21 +146,9 @@ function hammy_replace_images( $content ) {
 
                     // Output & Replace Strings
 
-                    /*
-
-                    <figure class="responsive" data-media="assets/images/small.png" data-media440="assets/images/medium.png" data-media600="assets/images/large.png" title="A Half Brained Idea">
-					    <noscript>
-					        <img src="assets/images/large.png" alt="A Half Brained Idea">
-					    </noscript>
-					</figure>
-
-					*/	
-
                     $newimage = '<figure class="hammy-responsive ' . $class . '" alt="' . $alt . '" title="' . $title . '" ';
 
                     foreach ( $sizes as $size ) {
-
-                    	var_dump($size);
 
                         if ( $size <= $width ) {
 
