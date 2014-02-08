@@ -4,9 +4,9 @@
 
 figure.hammy-responsive {
     display: block;
-    margin: 0!important;
-    -webkit-margin-before: 0!important;
-    -webkit-margin-after: 0!important;
-    -webkit-margin-start: 0!important;
-    -webkit-margin-end: 0!important;
+    margin: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
 }
