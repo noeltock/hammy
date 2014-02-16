@@ -12,7 +12,7 @@ Author URI: http://www.noeltock.com
  * Defines
  */
 $path = explode( DIRECTORY_SEPARATOR, dirname( __FILE__ ) );
-define ( 'HAMMY_VERSION', '1.5.0' );
+define ( 'HAMMY_VERSION', '1.5.1' );
 define ( 'HAMMY_PATH',  WP_PLUGIN_URL . '/' . end( $path ) );
 
 /**
@@ -146,7 +146,7 @@ function hammy_replace_images( $content ) {
 
                     // Output & Replace Strings
 
-                    $newimage = '<figure class="hammy-responsive ' . $class . '" alt="' . $alt . '" title="' . $title . '" ';
+                    $newimage = '<figure class="hammy-responsive ' . $class . '" title="' . $title . '" ';
 
                     foreach ( $sizes as $size ) {
 
