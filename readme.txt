@@ -39,7 +39,7 @@ Follow me for updates at [@noeltock](http://www.twitter.com/noeltock)
 
 If you have technical issues or other enhancements that you'd like to contribute, please do so in the form of a pull request or issue here:
 
-[http://wordpress.org/plugins/hammy/](http://wordpress.org/plugins/hammy/)
+[https://github.com/noeltock/hammy](https://github.com/noeltock/hammy)
 
 == Installation ==
 
