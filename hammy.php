@@ -49,13 +49,13 @@ function hammy_defaults() {
  * 
  */
 if ( !function_exists( 'wpthumb' ) ) {
-	include_once( 'WPThumb/wpthumb.php' );
+	include_once( __DIR__.'/WPThumb/wpthumb.php' );
 }
 
 /**
  * Plugin Options
  */
-include_once( 'includes/options.php' );
+include_once( __DIR__.'/includes/options.php' );
 
 add_action( 'admin_init', 'hammy_options_init' );
 add_action( 'admin_menu', 'hammy_add_page' );
